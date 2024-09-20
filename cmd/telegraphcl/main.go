@@ -1,7 +1,7 @@
 package main
 
 import (
-	"github.com/plant99/telegraphcl/pkg/cmd"
+	"your-module-name/pkg/cmd"
 )
 
 func main() {
