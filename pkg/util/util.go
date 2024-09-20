@@ -65,11 +65,11 @@ func MakeRequest(path string, payload interface{}) ([]byte, error) {
 
 	r := new(Response)
 	if err := parser.Unmarshal(resp.Body(), r); err != nil {
-		return nil, err
+		return nil, fmt.Errorf("failed to unmarshal response: %w", err)
 	}
 
 	if !r.Ok {
-		return nil, errors.New(r.Error)
+		return nil, fmt.Errorf("API error: %s", r.Error)
 	}
 
 	return r.Result, nil

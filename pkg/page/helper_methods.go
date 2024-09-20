@@ -72,9 +72,9 @@ func CreatePage(path string, title string) {
 
 	// get []Nodes from markdown file in path
 	nodes, err := MarkdownFileToNodes(path)
-
 	if err != nil {
-		panic(err)
+		fmt.Println("Error converting markdown to nodes:", err)
+		return
 	}
 
 	userInfo := user.GetCurrentUserNameAndURL()
