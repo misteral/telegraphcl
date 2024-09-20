@@ -74,7 +74,8 @@ func CreatePage(path string, title string) {
 	// get access_token
 	accessToken, err := util.FetchAccessToken()
 	if err != nil {
-		fmt.Println(err)
+		fmt.Println("Error fetching access token:", err)
+		return
 	}
 
 	// get []Nodes from markdown file in path
@@ -106,6 +107,11 @@ func CreatePage(path string, title string) {
 	parser := jsoniter.ConfigFastest
 	if err != nil {
 		fmt.Println("Error making request:", err)
+		return
+	}
+
+	if data == nil {
+		fmt.Println("Received nil data from MakeRequest")
 		return
 	}
 
