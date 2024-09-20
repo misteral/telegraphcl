@@ -1,7 +1,7 @@
 package main
 
 import (
-	"your-module-name/pkg/cmd"
+	"your-actual-module-name/pkg/cmd"
 )
 
 func main() {
