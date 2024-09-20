@@ -104,7 +104,6 @@ func CreatePage(path string, title string) {
 	// get total views on page
 
 	data, err := util.MakeRequest("createPage", createPageRequestInstance)
-	parser := jsoniter.ConfigFastest
 	if err != nil {
 		fmt.Println("Error making request:", err)
 		return
@@ -115,13 +114,13 @@ func CreatePage(path string, title string) {
 		return
 	}
 
+	parser := jsoniter.ConfigFastest
 	if err := parser.Unmarshal(data, &createPageResponseInstance); err != nil {
 		fmt.Println("Couldn't handle api.telegra.ph response. Is the Telegra.ph path correct?")
 		return
 	}
 
 	fmt.Println(createPageResponseInstance.URL)
-
 }
 
 func GetPage(path string) {

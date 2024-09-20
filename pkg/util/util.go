@@ -38,10 +38,10 @@ func MakeRequest(path string, payload interface{}) ([]byte, error) {
 	parser := jsoniter.ConfigFastest
 
 	src, err := parser.Marshal(payload)
-	emptyBytes := []byte{}
 	if err != nil {
-		return emptyBytes, errors.New("Failed to marshal payload")
+		return nil, errors.New("Failed to marshal payload")
 	}
+
 	u := http.AcquireURI()
 	defer http.ReleaseURI(u)
 	u.SetScheme("https")
