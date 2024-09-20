@@ -78,6 +78,10 @@ func CreatePage(path string, title string) {
 	}
 
 	userInfo := user.GetCurrentUserNameAndURL()
+	if len(userInfo) < 2 {
+		fmt.Println("Error: User information is incomplete.")
+		return
+	}
 
 	createPageRequestInstance := createPageRequest{
 		Title:         title,
