@@ -26,7 +26,10 @@ func ListPages() {
 		fmt.Println(err)
 	}
 
-	parser := jsoniter.ConfigFastest
+	if err != nil {
+		fmt.Println("Error making request:", err)
+		return
+	}
 
 	pageList := new(PageList)
 
@@ -47,7 +50,7 @@ func GetViews(path string) {
 	}
 
 	responsePageViews := new(PageViews)
-	// get total views on page
+	// create page
 	data, err := util.MakeRequest("getViews", requestPageViews)
 
 	parser := jsoniter.ConfigFastest
@@ -88,7 +91,8 @@ func CreatePage(path string, title string) {
 	// get total views on page
 	data, err := util.MakeRequest("createPage", createPageRequestInstance)
 	parser := jsoniter.ConfigFastest
-	if err = parser.Unmarshal(data, &createPageResponseInstance); err != nil {
+	parser := jsoniter.ConfigFastest
+	if err := parser.Unmarshal(data, &createPageResponseInstance); err != nil {
 		fmt.Println("Couldn't handle api.telegra.ph response. Is the Telegra.ph path correct?")
 	}
 	fmt.Println(createPageResponseInstance.URL)
