@@ -31,7 +31,7 @@ func ListPages() {
 	pageList := new(PageList)
 
 	if err = parser.Unmarshal(data, pageList); err != nil {
-		fmt.Println("Couldn't handle api.telegra.ph response.")
+		fmt.Println("Couldn't handle api.telegra.ph response !!!.")
 	}
 	fmt.Println("Index | URL | Title")
 	fmt.Println("--------------------")
