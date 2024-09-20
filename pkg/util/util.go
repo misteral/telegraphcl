@@ -72,10 +72,6 @@ func MakeRequest(path string, payload interface{}) ([]byte, error) {
 		return nil, fmt.Errorf("API error: %s", r.Error)
 	}
 
-	if r.Result == nil {
-		return nil, errors.New("API response result is nil")
-	}
-
 	return r.Result, nil
 }
 

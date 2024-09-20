@@ -34,9 +34,16 @@ func ListPages() {
 
 	pageList := new(PageList)
 
+	if err != nil {
+		fmt.Println("Error making request:", err)
+		return
+	}
+
 	if err = parser.Unmarshal(data, pageList); err != nil {
 		fmt.Println("Couldn't handle api.telegra.ph response !!!.")
+		return
 	}
+
 	fmt.Println("Index | URL | Title")
 	fmt.Println("--------------------")
 	for i := 0; i < len(pageList.Pages); i++ {
